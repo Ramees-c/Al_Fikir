@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <rect width="200" height="60" rx="14" fill="#1C2A39"/>
+  <path d="M32 20 H52 L36 40 H56" stroke="#E85D75" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="125" y="38" font-family="'Outfit', sans-serif" font-weight="900" font-size="24" fill="#FFFFFF" text-anchor="middle" letter-spacing="3">ZEBRA</text>
+</svg>

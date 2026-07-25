@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <rect width="200" height="60" rx="14" fill="#2E6B4F"/>
+  <circle cx="42" cy="30" r="14" fill="#E2F5EA"/>
+  <path d="M42 20 L45 27 L52 28 L47 33 L48 40 L42 36 L36 40 L37 33 L32 28 L39 27 Z" fill="#2E6B4F"/>
+  <text x="120" y="38" font-family="'Outfit', sans-serif" font-weight="800" font-size="24" fill="#FFFFFF" text-anchor="middle" letter-spacing="3">MIDORI</text>
+</svg>
