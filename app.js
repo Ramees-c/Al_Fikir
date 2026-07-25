@@ -125,6 +125,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
   startSlideShow();
 
+  // 1.2 Offer Ad Banner Image Carousel Slider (Auto-Sliding, No UI Buttons/Dots)
+  const offerSlides = document.querySelectorAll('.offer-slide');
+  const offerCardContainer = document.querySelector('.offer-banner-card');
+  let currentOfferSlide = 0;
+  let offerSlideInterval;
+
+  if (offerSlides.length > 0) {
+    function showOfferSlide(index) {
+      offerSlides.forEach((slide) => slide.classList.remove('active'));
+      currentOfferSlide = (index + offerSlides.length) % offerSlides.length;
+      offerSlides[currentOfferSlide].classList.add('active');
+    }
+
+    function nextOfferSlide() {
+      showOfferSlide(currentOfferSlide + 1);
+    }
+
+    function prevOfferSlide() {
+      showOfferSlide(currentOfferSlide - 1);
+    }
+
+    function startOfferSlideShow() {
+      stopOfferSlideShow();
+      offerSlideInterval = setInterval(nextOfferSlide, 4500);
+    }
+
+    function stopOfferSlideShow() {
+      if (offerSlideInterval) clearInterval(offerSlideInterval);
+    }
+
+    if (offerCardContainer) {
+      offerCardContainer.addEventListener('mouseenter', stopOfferSlideShow);
+      offerCardContainer.addEventListener('mouseleave', startOfferSlideShow);
+
+      // Touch swipe gesture support for mobile
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      offerCardContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      offerCardContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const swipeDistance = touchEndX - touchStartX;
+        if (Math.abs(swipeDistance) > 35) {
+          if (swipeDistance < 0) {
+            nextOfferSlide();
+          } else {
+            prevOfferSlide();
+          }
+          startOfferSlideShow();
+        }
+      }, { passive: true });
+    }
+
+    startOfferSlideShow();
+  }
+
   // 1.5 Interactive Parallax & Cursor Sparkle Trail for Hero
   const heroSection = document.querySelector('.hero-slider-container');
   if (heroSection) {
@@ -139,7 +198,24 @@ document.addEventListener('DOMContentLoaded', () => {
       { selector: '.hero-svg-ribbon-left', speed: 0.02 }
     ];
 
+    function resetHeroParallax() {
+      if (!heroSection) return;
+      parallaxElements.forEach((item) => {
+        const el = heroSection.querySelector(item.selector);
+        if (el) {
+          el.style.setProperty('--mx', '0px');
+          el.style.setProperty('--my', '0px');
+        }
+      });
+    }
+
     heroSection.addEventListener('mousemove', (e) => {
+      // Disable mouse pointer effects on small screens (width <= 991px)
+      if (window.innerWidth <= 991) {
+        resetHeroParallax();
+        return;
+      }
+
       const rect = heroSection.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
@@ -156,13 +232,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     heroSection.addEventListener('mouseleave', () => {
-      parallaxElements.forEach((item) => {
-        const el = heroSection.querySelector(item.selector);
-        if (el) {
-          el.style.setProperty('--mx', '0px');
-          el.style.setProperty('--my', '0px');
-        }
-      });
+      resetHeroParallax();
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= 991) {
+        resetHeroParallax();
+      }
     });
 
     // B. Sparkle Trail Generator
@@ -170,6 +246,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const sparkleColors = ['#E85D75', '#F4A261', '#254E7A', '#D7E9F4', '#FFF4CC'];
 
     heroSection.addEventListener('mousemove', (e) => {
+      // Disable sparkle particles on small screens
+      if (window.innerWidth <= 991) return;
+
       const now = Date.now();
       if (now - lastSparkleTime < 50) return; // rate limit: 1 sparkle per 50ms
       lastSparkleTime = now;
@@ -244,16 +323,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 3. Product Database
   const productsDB = {
-    1: { id: 1, title: 'Iconic Marking Tape', price: 89.00, img: 'assets/cat_washi.png', rating: 5, oldPrice: 99.00, category: 'washi' },
-    2: { id: 2, title: 'Index Sticky Notes', price: 110.00, img: 'assets/cat_memo.png', rating: 5, oldPrice: 150.00, category: 'memo' },
-    3: { id: 3, title: 'Holidays Gel Pens', price: 19.90, img: 'assets/cat_pencil.png', rating: 5, oldPrice: null, category: 'pencils' },
-    4: { id: 4, title: 'Glue Tape Roller', price: 29.00, img: 'assets/cat_sticker.png', rating: 4, oldPrice: null, category: 'sticker' },
-    5: { id: 5, title: 'Candy Color Tape Roll', price: 14.90, img: 'assets/cat_washi.png', rating: 5, oldPrice: 19.90, category: 'washi' },
+    1: { id: 1, title: 'Iconic Marking Washi Tape', price: 89.00, img: 'assets/cat_washi.png', rating: 5, oldPrice: 99.00, category: 'washi' },
+    2: { id: 2, title: 'Index Pastel Sticky Notes', price: 110.00, img: 'assets/cat_memo.png', rating: 5, oldPrice: 150.00, category: 'memo' },
+    3: { id: 3, title: 'Kawaii Holidays Gel Pens', price: 19.90, img: 'assets/cat_pencil.png', rating: 5, oldPrice: null, category: 'pencils' },
+    4: { id: 4, title: 'Glue Tape Roller Set', price: 29.00, img: 'assets/cat_sticker.png', rating: 4, oldPrice: null, category: 'sticker' },
+    5: { id: 5, title: 'Candy Color Tape Roll', price: 14.90, img: 'assets/hero_pastel_combo.png', rating: 5, oldPrice: 19.90, category: 'washi' },
     6: { id: 6, title: 'Campus Key Ring Planner', price: 200.00, img: 'assets/banner_notebook.png', rating: 5, oldPrice: null, category: 'memo' },
     7: { id: 7, title: 'Origin Weekly Planner', price: 110.00, img: 'assets/cat_memo.png', rating: 5, oldPrice: 160.00, category: 'memo' },
-    8: { id: 8, title: 'Official Slim Diary', price: 150.00, img: 'assets/banner_notebook.png', rating: 4, oldPrice: null, category: 'memo' },
+    8: { id: 8, title: 'Official Slim Kawaii Diary', price: 150.00, img: 'assets/hero_stickers.png', rating: 4, oldPrice: null, category: 'memo' },
     9: { id: 9, title: 'Cat Paw Correction Tape', price: 200.00, img: 'assets/cat_sticker.png', rating: 5, oldPrice: 250.00, category: 'sticker' },
-    10: { id: 10, title: 'Watercolor Paper Pack', price: 100.00, img: 'assets/cat_memo.png', rating: 5, oldPrice: 150.00, category: 'memo' }
+    10: { id: 10, title: 'Watercolor Paper Pack', price: 100.00, img: 'assets/cat_memo.png', rating: 5, oldPrice: 150.00, category: 'memo' },
+    11: { id: 11, title: 'Mildliner Double-Ended Markers', price: 79.00, img: 'assets/banner_gelpen.png', rating: 5, oldPrice: 95.00, category: 'pencils' },
+    12: { id: 12, title: 'Pastel Hardcover Journal', price: 149.00, img: 'assets/banner_notebook.png', rating: 5, oldPrice: 175.00, category: 'memo' },
+    13: { id: 13, title: 'Retro Color Highlighter Set', price: 35.00, img: 'assets/cat_pencil.png', rating: 5, oldPrice: null, category: 'pencils' },
+    14: { id: 14, title: 'Deco Sticker Collector Album', price: 45.00, img: 'assets/hero_stickers.png', rating: 5, oldPrice: 55.00, category: 'sticker' },
+    15: { id: 15, title: 'Aesthetic Kawaii Desk Kit', price: 120.00, img: 'assets/hero_pastel_combo.png', rating: 5, oldPrice: 140.00, category: 'memo' }
   };
 
   // 4. Quick View Modal
@@ -450,8 +534,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const suffix = stat.getAttribute('data-suffix') || '';
         const decimals = parseInt(stat.getAttribute('data-decimals') || '0');
         let current = 0;
-        const duration = 1800;
-        const stepTime = 25;
+        const duration = 3800; // Slower counting duration (reduced speed)
+        const stepTime = 30;   // Smooth step interval
         const totalSteps = duration / stepTime;
         const increment = target / totalSteps;
 

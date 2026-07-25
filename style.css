@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap');
 
 /* Design System & Tokens - Light Blue Theme */
 :root {
@@ -15,7 +15,7 @@
   --color-bg-light: #F2F8FC;        /* Subtly tinted container background */
   
   --color-text-dark: #1C2A39;       /* Deep Slate Navy (Rich Dark Text) */
-  --color-text-muted: #5C7085;      /* Slate Muted Text */
+  --color-text-muted: #4A5D6E;      /* Slate Muted Text - High Contrast & Color Accurate */
   --color-border: #D3E4F0;          /* Harmonious Soft Light Blue Border Tint */
   
   --color-pastel-pink: #FCE4EC;     /* Soft pastel pink */
@@ -24,11 +24,16 @@
   --color-pastel-green: #E2F5EA;    /* Soft mint green */
   --color-pastel-purple: #EDE7F6;   /* Soft lavender */
 
-  --font-heading: 'Outfit', sans-serif;
+  --font-heading: 'Manrope', sans-serif;
   --font-body: 'Quicksand', sans-serif;
   --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   --shadow-card: 0 10px 30px rgba(25, 50, 85, 0.06);
   --shadow-hover: 0 18px 40px rgba(25, 50, 85, 0.12);
+}
+
+/* Color Accuracy Override for Muted Text */
+.text-muted {
+  color: var(--color-text-muted) !important;
 }
 
 /* Custom Aesthetic Scrollbar */
@@ -417,6 +422,7 @@ a {
   padding: 20px 24px;
   border-bottom: 1px solid var(--color-border);
   background-color: var(--color-bg-light);
+  flex-shrink: 0;
 }
 
 .mobile-logo-img {
@@ -451,26 +457,33 @@ a {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  justify-content: space-between;
 }
 
 .mobile-menu-links {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  margin: auto 0;
+  width: 100%;
+  align-items: flex-start;
 }
 
 .mobile-nav-item {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 14px;
-  padding: 12px 18px;
+  padding: 12px 24px;
   border-radius: 14px;
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   color: var(--color-text-dark);
   transition: var(--transition-smooth);
   text-decoration: none;
+  width: 100%;
+  text-align: left;
 }
 
 .mobile-nav-item i {
@@ -484,7 +497,7 @@ a {
 .mobile-nav-item.active {
   background-color: var(--color-pastel-blue);
   color: var(--color-primary);
-  transform: translateX(4px);
+  transform: translateY(-2px);
 }
 
 .mobile-nav-item:hover i {
@@ -494,7 +507,13 @@ a {
 .mobile-drawer-divider {
   height: 1px;
   background-color: var(--color-border);
-  margin: 20px 0;
+  margin: 15px 0;
+}
+
+.mobile-drawer-social {
+  margin-top: auto;
+  text-align: left;
+  width: 100%;
 }
 
 .mobile-social-title {
@@ -504,6 +523,7 @@ a {
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--color-text-muted);
+  display: block;
 }
 
 .badge-count {
@@ -874,7 +894,7 @@ a {
 }
 
 .hero-title-center {
-  font-size: clamp(1.8rem, 5.5vw, 3.2rem);
+  font-size: clamp(2.4rem, 6.5vw, 4rem);
   font-weight: 800;
   line-height: 1.18;
   color: var(--color-text-dark);
@@ -1497,6 +1517,156 @@ a {
   z-index: -1;
 }
 
+/* ==========================================================================
+   Offer Ad Banner Section (Fully Responsive Image Carousel)
+   ========================================================================== */
+.offer-banner-section {
+  padding: clamp(15px, 2.5vw, 28px) 0;
+  background-color: var(--color-bg-body);
+  position: relative;
+  z-index: 10;
+}
+
+.offer-banner-card {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F4F9FC 50%, #E8F3FA 100%);
+  border: 2px solid var(--color-border);
+  border-radius: clamp(14px, 2vw, 24px);
+  box-shadow: 0 10px 30px rgba(25, 50, 85, 0.08);
+  padding: clamp(8px, 1.2vw, 14px);
+  position: relative;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
+  width: 100%;
+}
+
+.offer-banner-card:hover {
+  box-shadow: 0 16px 40px rgba(25, 50, 85, 0.12);
+  border-color: #B6D7EC;
+}
+
+/* Decorative Washi Tapes */
+.offer-washi-tape {
+  position: absolute;
+  width: clamp(60px, 8vw, 90px);
+  height: clamp(16px, 2vw, 22px);
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.offer-tape-left {
+  top: -6px;
+  left: 25px;
+  background: rgba(232, 93, 117, 0.25);
+  border-radius: 3px;
+  transform: rotate(-12deg);
+}
+
+.offer-tape-right {
+  bottom: -6px;
+  right: 25px;
+  background: rgba(244, 162, 97, 0.3);
+  border-radius: 3px;
+  transform: rotate(10deg);
+}
+
+/* Carousel Container & Slides */
+.offer-carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.offer-slides-container {
+  display: grid;
+  grid-template-rows: 1fr;
+  align-items: center;
+  width: 100%;
+}
+
+.offer-slide {
+  grid-area: 1 / 1 / 2 / 2;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(20px) scale(0.99);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+}
+
+.offer-slide.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+/* Responsive Banner Image Container & Image */
+.offer-banner-image-link {
+  width: 100%;
+  display: block;
+  border-radius: clamp(10px, 1.8vw, 18px);
+  overflow: hidden;
+}
+
+.offer-banner-image-container {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  border-radius: clamp(10px, 1.8vw, 18px);
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #F8FAFC 0%, #EDF4FA 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.offer-banner-full-img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: clamp(10px, 1.8vw, 18px);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.offer-banner-image-link:hover .offer-banner-full-img {
+  transform: scale(1.03);
+}
+
+/* Breakpoint Media Queries for Optimal Responsiveness */
+@media (max-width: 991.98px) {
+  .offer-banner-image-container {
+    aspect-ratio: auto;
+    height: auto;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .offer-banner-section {
+    padding: 12px 0;
+  }
+  .offer-banner-card {
+    padding: 6px;
+    border-radius: 14px;
+  }
+  .offer-banner-image-container {
+    aspect-ratio: auto;
+    height: auto;
+    border-radius: 10px;
+  }
+  .offer-banner-full-img {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+  }
+  .offer-washi-tape {
+    display: none; /* Hide tape accents on small mobile screens for maximum space */
+  }
+}
+
 /* Service Highlights Section */
 .features-section {
   padding: 50px 0;
@@ -1776,29 +1946,13 @@ a {
   transform: scale(1.08);
 }
 
-/* Floating Action Bar */
+/* Floating Action Bar - Disabled */
 .product-actions {
-  position: absolute;
-  bottom: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 6px 12px;
-  border-radius: 30px;
-  box-shadow: 0 10px 25px rgba(25, 50, 85, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  opacity: 0;
-  z-index: 10;
+  display: none !important;
 }
 
 .product-card:hover .product-actions {
-  bottom: 12px;
-  opacity: 1;
+  display: none !important;
 }
 
 .action-btn {
@@ -1843,14 +1997,15 @@ a {
 }
 
 .product-title {
-  font-size: 0.96rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  line-height: 1.35;
+  font-size: 1.22rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  line-height: 1.3;
 }
 
 .product-title a {
   color: var(--color-text-dark);
+  transition: var(--transition-smooth);
 }
 
 .product-title a:hover {
@@ -1859,7 +2014,7 @@ a {
 
 .price-current {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 800;
   color: var(--color-primary);
 }
@@ -4762,5 +4917,42 @@ html {
 
   .slider-dots {
     margin-top: 25px;
+  }
+}
+
+/* Remove all mouse pointer & parallax hover effects in hero section on small screens */
+@media (max-width: 991.98px) {
+  .hero-slider-container {
+    cursor: default;
+  }
+
+  .hero-slider-container * {
+    --mx: 0px !important;
+    --my: 0px !important;
+  }
+
+  .hero-sparkle-particle {
+    display: none !important;
+    pointer-events: none !important;
+  }
+
+  .hero-letter:hover {
+    transform: none !important;
+    color: inherit !important;
+    text-shadow: none !important;
+  }
+
+  .hero-mobile-card:hover {
+    transform: none !important;
+    box-shadow: 0 10px 25px rgba(25, 50, 85, 0.1) !important;
+  }
+
+  .hero-img-card:hover img {
+    transform: none !important;
+  }
+
+  .hero-sushi-sticker,
+  .hero-svg-accent {
+    pointer-events: none !important;
   }
 }

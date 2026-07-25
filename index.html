@@ -108,7 +108,7 @@
 
         <div class="mobile-drawer-social mt-3">
           <span class="mobile-social-title">Connect With Us</span>
-          <div class="d-flex align-items-center gap-2 mt-2">
+          <div class="d-flex align-items-center justify-content-start gap-2 mt-2">
             <a href="#" class="header-social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="#" class="header-social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
             <a href="#" class="header-social-btn" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
@@ -539,6 +539,59 @@
       </div>
     </section>
 
+    <!-- 2.2 Offer Ad Banner Section (Only Banner Images, Auto Carousel) -->
+    <section class="offer-banner-section mt-5">
+      <div class="container">
+        <div class="offer-banner-card position-relative overflow-hidden">
+          <!-- Washi Tape Decorative Accents -->
+          <div class="offer-washi-tape offer-tape-left"></div>
+          <div class="offer-washi-tape offer-tape-right"></div>
+
+          <!-- Banner Carousel Wrapper -->
+          <div class="offer-carousel-wrapper">
+            <!-- Offer Slides Container -->
+            <div class="offer-slides-container" id="offerSlidesContainer">
+              <!-- Slide 1 -->
+              <div class="offer-slide active">
+                <a href="#featured-products" class="offer-banner-image-link d-block">
+                  <div class="offer-banner-image-container position-relative">
+                    <img src="assets/ad_sample.png" alt="Special Offer Banner - Premium Notebooks & Planners" class="offer-banner-full-img" />
+                  </div>
+                </a>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="offer-slide">
+                <a href="#categories" class="offer-banner-image-link d-block">
+                  <div class="offer-banner-image-container position-relative">
+                    <img src="assets/ad_sample.png" alt="Special Offer Banner - Kawaii Stickers" class="offer-banner-full-img" />
+                  </div>
+                </a>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="offer-slide">
+                <a href="#featured-products" class="offer-banner-image-link d-block">
+                  <div class="offer-banner-image-container position-relative">
+                    <img src="assets/ad_sample.png" alt="Special Offer Banner - Smooth Ink Gel Pens" class="offer-banner-full-img" />
+                  </div>
+                </a>
+              </div>
+
+              <!-- Slide 4 -->
+              <div class="offer-slide">
+                <a href="#featured-products" class="offer-banner-image-link d-block">
+                  <div class="offer-banner-image-container position-relative">
+                    <img src="assets/ad_sample.png" alt="Special Offer Banner - Stationery Combo Box" class="offer-banner-full-img" />
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 2.5 About Us Section -->
     <section class="about-us-section" id="about-us">
       <div class="container">
@@ -766,9 +819,7 @@
             >
             <h2 class="section-title mb-0 d-block">Shop By Categories</h2>
           </div>
-          <a href="#" class="view-all-link me-2 align-self-end"
-            >View all categories <i class="fa-solid fa-arrow-right ms-1"></i
-          ></a>
+         
         </div>
 
         <div class="carousel-wrapper">
@@ -863,6 +914,62 @@
                 </div>
               </div>
             </div>
+
+            <!-- Category Card 7: Art & Crafts -->
+            <div class="category-card-item">
+              <div class="category-card">
+                <img
+                  src="assets/about_us_studio.png"
+                  class="category-img"
+                  alt="Art & Crafts Category"
+                />
+                <div class="category-overlay d-flex flex-column justify-content-end">
+                  <a href="#" class="category-btn text-center">Art Supplies</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category Card 8: Deco Stickers -->
+            <div class="category-card-item">
+              <div class="category-card">
+                <img
+                  src="assets/hero_stickers.png"
+                  class="category-img"
+                  alt="Deco Art Accessories"
+                />
+                <div class="category-overlay d-flex flex-column justify-content-end">
+                  <a href="#" class="category-btn text-center">Deco Accessories</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category Card 9: Pastel Combo Sets -->
+            <div class="category-card-item">
+              <div class="category-card">
+                <img
+                  src="assets/hero_pastel_combo.png"
+                  class="category-img"
+                  alt="Pastel Combo Kits"
+                />
+                <div class="category-overlay d-flex flex-column justify-content-end">
+                  <a href="#" class="category-btn text-center">Combo Kits</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category Card 10: Office & School -->
+            <div class="category-card-item">
+              <div class="category-card">
+                <img
+                  src="assets/store_front.png"
+                  class="category-img"
+                  alt="School & Office Essentials"
+                />
+                <div class="category-overlay d-flex flex-column justify-content-end">
+                  <a href="#" class="category-btn text-center">School & Office</a>
+                </div>
+              </div>
+            </div>
           </div>
 
           <button
@@ -889,7 +996,7 @@
             <h2 class="section-title mb-0 d-block">Featured Products</h2>
           </div>
           <a href="#" class="view-all-link me-2 align-self-end"
-            >View all featured <i class="fa-solid fa-arrow-right ms-1"></i
+            >View all products <i class="fa-solid fa-arrow-right ms-1"></i
           ></a>
         </div>
 
@@ -904,35 +1011,14 @@
             <!-- Product Card 1 -->
             <div class="product-card-wrapper">
               <div class="product-card">
-                <span class="product-badge badge-discount">-10% OFF</span>
                 <div class="product-img-wrapper">
                   <img
                     src="assets/cat_washi.png"
                     class="product-img"
                     alt="Iconic Marking Tape"
                   />
-                  <div class="product-actions">
-                    <button
-                      class="action-btn quick-view-trigger"
-                      data-id="1"
-                      title="Quick View"
-                    >
-                      <i class="fa-regular fa-eye"></i>
-                    </button>
-                    <button class="action-btn" title="Add to Wishlist">
-                      <i class="fa-regular fa-heart"></i>
-                    </button>
-                  </div>
                 </div>
                 <div class="product-info-wrapper">
-                  <div class="product-rating">
-                    <i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i>
-                    <span class="rating-count ms-1">(4.9)</span>
-                  </div>
                   <h3 class="product-title">
                     <a href="#">Iconic Marking Washi Tape</a>
                   </h3>
@@ -940,7 +1026,6 @@
                     class="product-price-row d-flex align-items-center justify-content-between"
                   >
                     <div class="product-price-wrapper mb-0">
-                      <span class="price-old">$99.00</span>
                       <span class="price-current">$89.00</span>
                     </div>
                     <button
@@ -958,35 +1043,14 @@
             <!-- Product Card 2 -->
             <div class="product-card-wrapper">
               <div class="product-card">
-                <span class="product-badge badge-discount">-26% OFF</span>
                 <div class="product-img-wrapper">
                   <img
                     src="assets/cat_memo.png"
                     class="product-img"
                     alt="Index Sticky Notes"
                   />
-                  <div class="product-actions">
-                    <button
-                      class="action-btn quick-view-trigger"
-                      data-id="2"
-                      title="Quick View"
-                    >
-                      <i class="fa-regular fa-eye"></i>
-                    </button>
-                    <button class="action-btn" title="Add to Wishlist">
-                      <i class="fa-regular fa-heart"></i>
-                    </button>
-                  </div>
                 </div>
                 <div class="product-info-wrapper">
-                  <div class="product-rating">
-                    <i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i>
-                    <span class="rating-count ms-1">(5.0)</span>
-                  </div>
                   <h3 class="product-title">
                     <a href="#">Index Pastel Sticky Notes</a>
                   </h3>
@@ -994,7 +1058,6 @@
                     class="product-price-row d-flex align-items-center justify-content-between"
                   >
                     <div class="product-price-wrapper mb-0">
-                      <span class="price-old">$150.00</span>
                       <span class="price-current">$110.00</span>
                     </div>
                     <button
@@ -1012,35 +1075,14 @@
             <!-- Product Card 3 -->
             <div class="product-card-wrapper">
               <div class="product-card">
-                <span class="product-badge badge-hot">POPULAR</span>
                 <div class="product-img-wrapper">
                   <img
                     src="assets/cat_pencil.png"
                     class="product-img"
                     alt="Holidays Gel Pens"
                   />
-                  <div class="product-actions">
-                    <button
-                      class="action-btn quick-view-trigger"
-                      data-id="3"
-                      title="Quick View"
-                    >
-                      <i class="fa-regular fa-eye"></i>
-                    </button>
-                    <button class="action-btn" title="Add to Wishlist">
-                      <i class="fa-regular fa-heart"></i>
-                    </button>
-                  </div>
                 </div>
                 <div class="product-info-wrapper">
-                  <div class="product-rating">
-                    <i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i>
-                    <span class="rating-count ms-1">(4.8)</span>
-                  </div>
                   <h3 class="product-title">
                     <a href="#">Kawaii Holidays Gel Pens</a>
                   </h3>
@@ -1071,28 +1113,8 @@
                     class="product-img"
                     alt="Glue Tape Roller"
                   />
-                  <div class="product-actions">
-                    <button
-                      class="action-btn quick-view-trigger"
-                      data-id="4"
-                      title="Quick View"
-                    >
-                      <i class="fa-regular fa-eye"></i>
-                    </button>
-                    <button class="action-btn" title="Add to Wishlist">
-                      <i class="fa-regular fa-heart"></i>
-                    </button>
-                  </div>
                 </div>
                 <div class="product-info-wrapper">
-                  <div class="product-rating">
-                    <i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i>
-                    <span class="rating-count ms-1">(4.9)</span>
-                  </div>
                   <h3 class="product-title">
                     <a href="#">Glue Tape Roller Set</a>
                   </h3>
@@ -1117,35 +1139,14 @@
             <!-- Product Card 5 -->
             <div class="product-card-wrapper">
               <div class="product-card">
-                <span class="product-badge badge-discount">-25% OFF</span>
                 <div class="product-img-wrapper">
                   <img
                     src="assets/hero_pastel_combo.png"
                     class="product-img"
                     alt="Candy Color Tape"
                   />
-                  <div class="product-actions">
-                    <button
-                      class="action-btn quick-view-trigger"
-                      data-id="5"
-                      title="Quick View"
-                    >
-                      <i class="fa-regular fa-eye"></i>
-                    </button>
-                    <button class="action-btn" title="Add to Wishlist">
-                      <i class="fa-regular fa-heart"></i>
-                    </button>
-                  </div>
                 </div>
                 <div class="product-info-wrapper">
-                  <div class="product-rating">
-                    <i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i>
-                    <span class="rating-count ms-1">(5.0)</span>
-                  </div>
                   <h3 class="product-title">
                     <a href="#">Candy Color Tape Roll</a>
                   </h3>
@@ -1153,12 +1154,107 @@
                     class="product-price-row d-flex align-items-center justify-content-between"
                   >
                     <div class="product-price-wrapper mb-0">
-                      <span class="price-old">$19.90</span>
                       <span class="price-current">$14.90</span>
                     </div>
                     <button
                       class="btn-view-details quick-view-trigger"
                       data-id="5"
+                      title="View Details"
+                    >
+                      View details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 6 -->
+            <div class="product-card-wrapper">
+              <div class="product-card">
+                <div class="product-img-wrapper">
+                  <img
+                    src="assets/banner_gelpen.png"
+                    class="product-img"
+                    alt="Mildliner Markers"
+                  />
+                </div>
+                <div class="product-info-wrapper">
+                  <h3 class="product-title">
+                    <a href="#">Mildliner Double-Ended Markers</a>
+                  </h3>
+                  <div
+                    class="product-price-row d-flex align-items-center justify-content-between"
+                  >
+                    <div class="product-price-wrapper mb-0">
+                      <span class="price-current">$79.00</span>
+                    </div>
+                    <button
+                      class="btn-view-details quick-view-trigger"
+                      data-id="11"
+                      title="View Details"
+                    >
+                      View details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 7 -->
+            <div class="product-card-wrapper">
+              <div class="product-card">
+                <div class="product-img-wrapper">
+                  <img
+                    src="assets/banner_notebook.png"
+                    class="product-img"
+                    alt="Pastel Hardcover Journal"
+                  />
+                </div>
+                <div class="product-info-wrapper">
+                  <h3 class="product-title">
+                    <a href="#">Pastel Hardcover Journal</a>
+                  </h3>
+                  <div
+                    class="product-price-row d-flex align-items-center justify-content-between"
+                  >
+                    <div class="product-price-wrapper mb-0">
+                      <span class="price-current">$149.00</span>
+                    </div>
+                    <button
+                      class="btn-view-details quick-view-trigger"
+                      data-id="12"
+                      title="View Details"
+                    >
+                      View details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 8 -->
+            <div class="product-card-wrapper">
+              <div class="product-card">
+                <div class="product-img-wrapper">
+                  <img
+                    src="assets/cat_pencil.png"
+                    class="product-img"
+                    alt="Retro Color Highlighter"
+                  />
+                </div>
+                <div class="product-info-wrapper">
+                  <h3 class="product-title">
+                    <a href="#">Retro Color Highlighter Set</a>
+                  </h3>
+                  <div
+                    class="product-price-row d-flex align-items-center justify-content-between"
+                  >
+                    <div class="product-price-wrapper mb-0">
+                      <span class="price-current">$35.00</span>
+                    </div>
+                    <button
+                      class="btn-view-details quick-view-trigger"
+                      data-id="13"
                       title="View Details"
                     >
                       View details
@@ -1174,6 +1270,328 @@
           >
             <i class="fa-solid fa-chevron-right"></i>
           </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. New Arrivals Slider -->
+    <section class="new-arrivals-section" id="new-arrivals">
+      <div class="container">
+        <div
+          class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3"
+        >
+          <div>
+            <span class="about-tag mb-2"
+              ><i class="fa-solid fa-sparkles me-1 text-warning"></i> JUST
+              LANDED</span
+            >
+            <h2 class="section-title mb-0 d-block">New Arrivals</h2>
+          </div>
+          <a href="#" class="view-all-link me-2 align-self-end"
+            >View all new arrivals <i class="fa-solid fa-arrow-right ms-1"></i
+          ></a>
+        </div>
+
+        <div class="carousel-wrapper">
+          <button
+            class="carousel-ctrl-btn carousel-ctrl-prev"
+            aria-label="Previous New Arrival"
+          >
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <div class="carousel-scroll-container">
+            <!-- Product Card 1 -->
+            <div class="product-card-wrapper">
+              <div class="product-card">
+                <div class="product-img-wrapper">
+                  <img
+                    src="assets/banner_notebook.png"
+                    class="product-img"
+                    alt="Campus Key Ring"
+                  />
+                </div>
+                <div class="product-info-wrapper">
+                  <h3 class="product-title">
+                    <a href="#">Campus Key Ring Planner</a>
+                  </h3>
+                  <div
+                    class="product-price-row d-flex align-items-center justify-content-between"
+                  >
+                    <div class="product-price-wrapper mb-0">
+                      <span class="price-current">$200.00</span>
+                    </div>
+                    <button
+                      class="btn-view-details quick-view-trigger"
+                      data-id="6"
+                      title="View Details"
+                    >
+                      View details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="product-card-wrapper">
+              <div class="product-card">
+                <div class="product-img-wrapper">
+                  <img
+                    src="assets/cat_memo.png"
+                    class="product-img"
+                    alt="Weekly Planner"
+                  />
+                </div>
+                <div class="product-info-wrapper">
+                  <h3 class="product-title">
+                    <a href="#">Origin Weekly Planner</a>
+                  </h3>
+                  <div
+                    class="product-price-row d-flex align-items-center justify-content-between"
+                  >
+                    <div class="product-price-wrapper mb-0">
+                      <span class="price-current">$110.00</span>
+                    </div>
+                    <button
+                      class="btn-view-details quick-view-trigger"
+                      data-id="7"
+                      title="View Details"
+                    >
+                      View details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="product-card-wrapper">
+              <div class="product-card">
+                <div class="product-img-wrapper">
+                  <img
+                    src="assets/hero_stickers.png"
+                    class="product-img"
+                    alt="Official Slim Diary"
+                  />
+                </div>
+                <div class="product-info-wrapper">
+                  <h3 class="product-title">
+                    <a href="#">Official Slim Kawaii Diary</a>
+                  </h3>
+                  <div
+                    class="product-price-row d-flex align-items-center justify-content-between"
+                  >
+                    <div class="product-price-wrapper mb-0">
+                      <span class="price-current">$150.00</span>
+                    </div>
+                    <button
+                      class="btn-view-details quick-view-trigger"
+                      data-id="8"
+                      title="View Details"
+                    >
+                      View details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="product-card-wrapper">
+              <div class="product-card">
+                <div class="product-img-wrapper">
+                  <img
+                    src="assets/cat_sticker.png"
+                    class="product-img"
+                    alt="Correction Tape"
+                  />
+                </div>
+                <div class="product-info-wrapper">
+                  <h3 class="product-title">
+                    <a href="#">Cat Paw Correction Tape</a>
+                  </h3>
+                  <div
+                    class="product-price-row d-flex align-items-center justify-content-between"
+                  >
+                    <div class="product-price-wrapper mb-0">
+                      <span class="price-current">$200.00</span>
+                    </div>
+                    <button
+                      class="btn-view-details quick-view-trigger"
+                      data-id="9"
+                      title="View Details"
+                    >
+                      View details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 5 -->
+            <div class="product-card-wrapper">
+              <div class="product-card">
+                <div class="product-img-wrapper">
+                  <img
+                    src="assets/cat_memo.png"
+                    class="product-img"
+                    alt="Paper Pack"
+                  />
+                </div>
+                <div class="product-info-wrapper">
+                  <h3 class="product-title">
+                    <a href="#">Watercolor Paper Pack</a>
+                  </h3>
+                  <div
+                    class="product-price-row d-flex align-items-center justify-content-between"
+                  >
+                    <div class="product-price-wrapper mb-0">
+                      <span class="price-current">$100.00</span>
+                    </div>
+                    <button
+                      class="btn-view-details quick-view-trigger"
+                      data-id="10"
+                      title="View Details"
+                    >
+                      View details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 6 -->
+            <div class="product-card-wrapper">
+              <div class="product-card">
+                <div class="product-img-wrapper">
+                  <img
+                    src="assets/hero_stickers.png"
+                    class="product-img"
+                    alt="Deco Sticker Album"
+                  />
+                </div>
+                <div class="product-info-wrapper">
+                  <h3 class="product-title">
+                    <a href="#">Deco Sticker Collector Album</a>
+                  </h3>
+                  <div
+                    class="product-price-row d-flex align-items-center justify-content-between"
+                  >
+                    <div class="product-price-wrapper mb-0">
+                      <span class="price-current">$45.00</span>
+                    </div>
+                    <button
+                      class="btn-view-details quick-view-trigger"
+                      data-id="14"
+                      title="View Details"
+                    >
+                      View details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 7 -->
+            <div class="product-card-wrapper">
+              <div class="product-card">
+                <div class="product-img-wrapper">
+                  <img
+                    src="assets/hero_pastel_combo.png"
+                    class="product-img"
+                    alt="Aesthetic Kawaii Desk Kit"
+                  />
+                </div>
+                <div class="product-info-wrapper">
+                  <h3 class="product-title">
+                    <a href="#">Aesthetic Kawaii Desk Kit</a>
+                  </h3>
+                  <div
+                    class="product-price-row d-flex align-items-center justify-content-between"
+                  >
+                    <div class="product-price-wrapper mb-0">
+                      <span class="price-current">$120.00</span>
+                    </div>
+                    <button
+                      class="btn-view-details quick-view-trigger"
+                      data-id="15"
+                      title="View Details"
+                    >
+                      View details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-ctrl-btn carousel-ctrl-next"
+            aria-label="Next New Arrival"
+          >
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Why Choose Us Section - Ultra Modern & Interactive -->
+    <section class="choose-us-section" id="why-choose-us">
+      <div class="container">
+        <div class="text-start max-w-700 me-auto mb-5">
+          <span class="about-tag mb-2"
+            ><i class="fa-solid fa-sparkles me-1 text-danger"></i> WHY CHOOSE ALFIKIR</span
+          >
+          <h2 class="section-title mb-3 d-block">Your Trusted Partner for Quality Stationery</h2>
+          <p class="text-muted fs-6 mb-0">
+            At Alfikir Center, we're committed to providing quality products, trusted brands, and excellent customer service—making every shopping experience simple, reliable, and inspiring.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="choose-card modern-choose-card">
+              <div class="choose-badge-icon bg-pastel-pink">
+                <i class="fa-solid fa-award text-danger"></i>
+              </div>
+              <h4 class="choose-title">Premium Quality Products</h4>
+              <p class="choose-text text-muted mb-4">
+                Carefully selected stationery, office supplies, and art materials from trusted brands.
+              </p>
+              <div class="choose-footer-chip">
+                <i class="fa-solid fa-check text-success me-1"></i> Guaranteed Quality
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="choose-card modern-choose-card">
+              <div class="choose-badge-icon bg-pastel-blue">
+                <i class="fa-solid fa-truck-fast text-primary"></i>
+              </div>
+              <h4 class="choose-title">Complete Product Range</h4>
+              <p class="choose-text text-muted mb-4">
+                Everything from school essentials and office supplies to creative art and craft materials.
+              </p>
+              <div class="choose-footer-chip">
+                <i class="fa-solid fa-bolt text-warning me-1"></i> One-Stop Stationery Store
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-12">
+            <div class="choose-card modern-choose-card">
+              <div class="choose-badge-icon bg-pastel-yellow">
+                <i class="fa-solid fa-heart text-warning"></i>
+              </div>
+              <h4 class="choose-title">Friendly Customer Service</h4>
+              <p class="choose-text text-muted mb-4">
+                Our team is always ready to help you find the right products for your needs.
+              </p>
+              <div class="choose-footer-chip">
+                <i class="fa-solid fa-gift text-danger me-1"></i> Customer-First Experience
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1470,371 +1888,9 @@
       </div>
     </section>
 
-    <!-- 6. Why Choose Us Section - Ultra Modern & Interactive -->
-    <section class="choose-us-section" id="why-choose-us">
-      <div class="container">
-        <div class="text-start max-w-700 me-auto mb-5">
-          <span class="about-tag mb-2"
-            ><i class="fa-solid fa-sparkles me-1 text-danger"></i> WHY CHOOSE ALFIKIR</span
-          >
-          <h2 class="section-title mb-3 d-block">Your Trusted Partner for Quality Stationery</h2>
-          <p class="text-muted fs-6 mb-0">
-            At Alfikir Center, we're committed to providing quality products, trusted brands, and excellent customer service—making every shopping experience simple, reliable, and inspiring.
-          </p>
-        </div>
+    
 
-        <div class="row g-4">
-          <div class="col-lg-4 col-md-6">
-            <div class="choose-card modern-choose-card">
-              <div class="choose-badge-icon bg-pastel-pink">
-                <i class="fa-solid fa-award text-danger"></i>
-              </div>
-              <h4 class="choose-title">Premium Quality Products</h4>
-              <p class="choose-text text-muted mb-4">
-                Carefully selected stationery, office supplies, and art materials from trusted brands.
-              </p>
-              <div class="choose-footer-chip">
-                <i class="fa-solid fa-check text-success me-1"></i> Guaranteed Quality
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="choose-card modern-choose-card">
-              <div class="choose-badge-icon bg-pastel-blue">
-                <i class="fa-solid fa-truck-fast text-primary"></i>
-              </div>
-              <h4 class="choose-title">Complete Product Range</h4>
-              <p class="choose-text text-muted mb-4">
-                Everything from school essentials and office supplies to creative art and craft materials.
-              </p>
-              <div class="choose-footer-chip">
-                <i class="fa-solid fa-bolt text-warning me-1"></i> One-Stop Stationery Store
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-12">
-            <div class="choose-card modern-choose-card">
-              <div class="choose-badge-icon bg-pastel-yellow">
-                <i class="fa-solid fa-heart text-warning"></i>
-              </div>
-              <h4 class="choose-title">Friendly Customer Service</h4>
-              <p class="choose-text text-muted mb-4">
-                Our team is always ready to help you find the right products for your needs.
-              </p>
-              <div class="choose-footer-chip">
-                <i class="fa-solid fa-gift text-danger me-1"></i> Customer-First Experience
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. New Arrivals Slider -->
-    <section class="new-arrivals-section" id="new-arrivals">
-      <div class="container">
-        <div
-          class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3"
-        >
-          <div>
-            <span class="about-tag mb-2"
-              ><i class="fa-solid fa-sparkles me-1 text-warning"></i> JUST
-              LANDED</span
-            >
-            <h2 class="section-title mb-0 d-block">New Arrivals</h2>
-          </div>
-          <a href="#" class="view-all-link me-2 align-self-end"
-            >View all new arrivals <i class="fa-solid fa-arrow-right ms-1"></i
-          ></a>
-        </div>
-
-        <div class="carousel-wrapper">
-          <button
-            class="carousel-ctrl-btn carousel-ctrl-prev"
-            aria-label="Previous New Arrival"
-          >
-            <i class="fa-solid fa-chevron-left"></i>
-          </button>
-          <div class="carousel-scroll-container">
-            <!-- Product Card 1 -->
-            <div class="product-card-wrapper">
-              <div class="product-card">
-                <span class="product-badge badge-hot">NEW</span>
-                <div class="product-img-wrapper">
-                  <img
-                    src="assets/banner_notebook.png"
-                    class="product-img"
-                    alt="Campus Key Ring"
-                  />
-                  <div class="product-actions">
-                    <button
-                      class="action-btn quick-view-trigger"
-                      data-id="6"
-                      title="Quick View"
-                    >
-                      <i class="fa-regular fa-eye"></i>
-                    </button>
-                    <button class="action-btn" title="Add to Wishlist">
-                      <i class="fa-regular fa-heart"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="product-info-wrapper">
-                  <div class="product-rating">
-                    <i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i>
-                    <span class="rating-count ms-1">(5.0)</span>
-                  </div>
-                  <h3 class="product-title">
-                    <a href="#">Campus Key Ring Planner</a>
-                  </h3>
-                  <div
-                    class="product-price-row d-flex align-items-center justify-content-between"
-                  >
-                    <div class="product-price-wrapper mb-0">
-                      <span class="price-current">$200.00</span>
-                    </div>
-                    <button
-                      class="btn-view-details quick-view-trigger"
-                      data-id="6"
-                      title="View Details"
-                    >
-                      View details
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Product Card 2 -->
-            <div class="product-card-wrapper">
-              <div class="product-card">
-                <span class="product-badge badge-discount">-31% OFF</span>
-                <div class="product-img-wrapper">
-                  <img
-                    src="assets/cat_memo.png"
-                    class="product-img"
-                    alt="Weekly Planner"
-                  />
-                  <div class="product-actions">
-                    <button
-                      class="action-btn quick-view-trigger"
-                      data-id="7"
-                      title="Quick View"
-                    >
-                      <i class="fa-regular fa-eye"></i>
-                    </button>
-                    <button class="action-btn" title="Add to Wishlist">
-                      <i class="fa-regular fa-heart"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="product-info-wrapper">
-                  <div class="product-rating">
-                    <i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i>
-                    <span class="rating-count ms-1">(4.9)</span>
-                  </div>
-                  <h3 class="product-title">
-                    <a href="#">Origin Weekly Planner</a>
-                  </h3>
-                  <div
-                    class="product-price-row d-flex align-items-center justify-content-between"
-                  >
-                    <div class="product-price-wrapper mb-0">
-                      <span class="price-old">$160.00</span>
-                      <span class="price-current">$110.00</span>
-                    </div>
-                    <button
-                      class="btn-view-details quick-view-trigger"
-                      data-id="7"
-                      title="View Details"
-                    >
-                      View details
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Product Card 3 -->
-            <div class="product-card-wrapper">
-              <div class="product-card">
-                <span class="product-badge badge-hot">HOT</span>
-                <div class="product-img-wrapper">
-                  <img
-                    src="assets/hero_stickers.png"
-                    class="product-img"
-                    alt="Official Slim Diary"
-                  />
-                  <div class="product-actions">
-                    <button
-                      class="action-btn quick-view-trigger"
-                      data-id="8"
-                      title="Quick View"
-                    >
-                      <i class="fa-regular fa-eye"></i>
-                    </button>
-                    <button class="action-btn" title="Add to Wishlist">
-                      <i class="fa-regular fa-heart"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="product-info-wrapper">
-                  <div class="product-rating">
-                    <i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i>
-                    <span class="rating-count ms-1">(4.8)</span>
-                  </div>
-                  <h3 class="product-title">
-                    <a href="#">Official Slim Kawaii Diary</a>
-                  </h3>
-                  <div
-                    class="product-price-row d-flex align-items-center justify-content-between"
-                  >
-                    <div class="product-price-wrapper mb-0">
-                      <span class="price-current">$150.00</span>
-                    </div>
-                    <button
-                      class="btn-view-details quick-view-trigger"
-                      data-id="8"
-                      title="View Details"
-                    >
-                      View details
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Product Card 4 -->
-            <div class="product-card-wrapper">
-              <div class="product-card">
-                <span class="product-badge badge-discount">-20% OFF</span>
-                <div class="product-img-wrapper">
-                  <img
-                    src="assets/cat_sticker.png"
-                    class="product-img"
-                    alt="Correction Tape"
-                  />
-                  <div class="product-actions">
-                    <button
-                      class="action-btn quick-view-trigger"
-                      data-id="9"
-                      title="Quick View"
-                    >
-                      <i class="fa-regular fa-eye"></i>
-                    </button>
-                    <button class="action-btn" title="Add to Wishlist">
-                      <i class="fa-regular fa-heart"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="product-info-wrapper">
-                  <div class="product-rating">
-                    <i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i>
-                    <span class="rating-count ms-1">(5.0)</span>
-                  </div>
-                  <h3 class="product-title">
-                    <a href="#">Cat Paw Correction Tape</a>
-                  </h3>
-                  <div
-                    class="product-price-row d-flex align-items-center justify-content-between"
-                  >
-                    <div class="product-price-wrapper mb-0">
-                      <span class="price-old">$250.00</span>
-                      <span class="price-current">$200.00</span>
-                    </div>
-                    <button
-                      class="btn-view-details quick-view-trigger"
-                      data-id="9"
-                      title="View Details"
-                    >
-                      View details
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Product Card 5 -->
-            <div class="product-card-wrapper">
-              <div class="product-card">
-                <span class="product-badge badge-discount">-33% OFF</span>
-                <div class="product-img-wrapper">
-                  <img
-                    src="assets/cat_memo.png"
-                    class="product-img"
-                    alt="Paper Pack"
-                  />
-                  <div class="product-actions">
-                    <button
-                      class="action-btn quick-view-trigger"
-                      data-id="10"
-                      title="Quick View"
-                    >
-                      <i class="fa-regular fa-eye"></i>
-                    </button>
-                    <button class="action-btn" title="Add to Wishlist">
-                      <i class="fa-regular fa-heart"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="product-info-wrapper">
-                  <div class="product-rating">
-                    <i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i
-                    ><i class="fa-solid fa-star"></i>
-                    <span class="rating-count ms-1">(4.9)</span>
-                  </div>
-                  <h3 class="product-title">
-                    <a href="#">Watercolor Paper Pack</a>
-                  </h3>
-                  <div
-                    class="product-price-row d-flex align-items-center justify-content-between"
-                  >
-                    <div class="product-price-wrapper mb-0">
-                      <span class="price-old">$150.00</span>
-                      <span class="price-current">$100.00</span>
-                    </div>
-                    <button
-                      class="btn-view-details quick-view-trigger"
-                      data-id="10"
-                      title="View Details"
-                    >
-                      View details
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button
-            class="carousel-ctrl-btn carousel-ctrl-next"
-            aria-label="Next New Arrival"
-          >
-            <i class="fa-solid fa-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-    </section>
+    
 
     <!-- 8. Testimonials (Customer Reviews Carousel) -->
     <section class="testimonials-section" id="testimonials">
@@ -2167,15 +2223,10 @@
         </div>
 
         <div
-          class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-3"
+          class="footer-bottom d-flex justify-content-center align-items-center flex-wrap gap-3"
         >
           <div>&copy; 2026 Rappod. All Rights Reserved.</div>
-          <div class="payment-methods d-flex align-items-center">
-            <i class="fa-brands fa-cc-visa fa-2x mx-1 text-secondary"></i>
-            <i class="fa-brands fa-cc-mastercard fa-2x mx-1 text-secondary"></i>
-            <i class="fa-brands fa-cc-paypal fa-2x mx-1 text-secondary"></i>
-            <i class="fa-brands fa-cc-stripe fa-2x mx-1 text-secondary"></i>
-          </div>
+          
         </div>
       </div>
     </footer>
