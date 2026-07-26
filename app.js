@@ -838,4 +838,68 @@ document.addEventListener('DOMContentLoaded', () => {
       closeMobileMenu();
     }
   });
+
+  // 13. Auto Pop Image Modal (Triggers 1 Second After Full Page Load, Auto Closes After 30 Seconds)
+  const autoPopupOverlay = document.getElementById('auto-popup-overlay');
+  const autoPopupCloseBtn = document.getElementById('autoPopupCloseBtn');
+
+  if (autoPopupOverlay) {
+    let autoCloseTimer = null;
+
+    function openAutoPopup() {
+      autoPopupOverlay.classList.add('active');
+      // Auto close modal 30 seconds (30000ms) after opening
+      autoCloseTimer = setTimeout(closeAutoPopup, 30000);
+    }
+
+    function closeAutoPopup() {
+      autoPopupOverlay.classList.remove('active');
+      if (autoCloseTimer) {
+        clearTimeout(autoCloseTimer);
+        autoCloseTimer = null;
+      }
+    }
+
+    // Schedule 1 second (1000ms) timer after page is fully loaded
+    if (document.readyState === 'complete') {
+      setTimeout(openAutoPopup, 1000);
+    } else {
+      window.addEventListener('load', () => {
+        setTimeout(openAutoPopup, 1000);
+      });
+    }
+
+    if (autoPopupCloseBtn) {
+      autoPopupCloseBtn.addEventListener('click', closeAutoPopup);
+    }
+
+    autoPopupOverlay.addEventListener('click', (e) => {
+      if (e.target === autoPopupOverlay) {
+        closeAutoPopup();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && autoPopupOverlay.classList.contains('active')) {
+        closeAutoPopup();
+      }
+    });
+  }
+
+  // 14. WhatsApp Floating Card Close Handler
+  const waCardCloseBtn = document.getElementById('waCardCloseBtn');
+  const whatsappTopCard = document.getElementById('whatsappTopCard');
+  if (waCardCloseBtn && whatsappTopCard) {
+    waCardCloseBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      whatsappTopCard.style.opacity = '0';
+      whatsappTopCard.style.transform = 'translateY(10px)';
+      whatsappTopCard.style.pointerEvents = 'none';
+      setTimeout(() => {
+        whatsappTopCard.style.display = 'none';
+      }, 300);
+    });
+  }
 });
+
