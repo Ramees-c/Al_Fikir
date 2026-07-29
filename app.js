@@ -359,10 +359,14 @@ document.addEventListener('DOMContentLoaded', () => {
     qvDesc.innerText = `Explore this beautiful premium ${product.title} for your desk space. Made with high quality materials and decorated with cute stationery art to boost your study motivation.`;
 
     quickViewOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
   }
 
   function closeQuickView() {
     quickViewOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   }
 
   // Bind Quick View triggers
@@ -454,6 +458,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = wrapper ? wrapper.querySelector('.carousel-ctrl-prev') : null;
     const nextBtn = wrapper ? wrapper.querySelector('.carousel-ctrl-next') : null;
     let autoSlideInterval = null;
+    let autoResumeTimeout = null;
+    let isUserInteracting = false;
 
     function getScrollStep() {
       if (container.firstElementChild) {
@@ -467,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function scrollNext() {
       const maxScrollLeft = container.scrollWidth - container.clientWidth;
       const scrollStep = getScrollStep();
-      
+
       // If we are at the end, scroll back to 0
       if (container.scrollLeft >= maxScrollLeft - 15) {
         container.scrollTo({ left: 0, behavior: 'smooth' });
@@ -492,33 +498,76 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    function clearAutoResumeTimer() {
+      if (autoResumeTimeout) {
+        clearTimeout(autoResumeTimeout);
+        autoResumeTimeout = null;
+      }
+    }
+
     function startAutoSlide() {
+      clearAutoResumeTimer();
       stopAutoSlide();
-      autoSlideInterval = setInterval(scrollNext, config.interval);
+      autoSlideInterval = setInterval(() => {
+        if (!isUserInteracting) {
+          scrollNext();
+        }
+      }, config.interval);
     }
 
     function stopAutoSlide() {
-      if (autoSlideInterval) clearInterval(autoSlideInterval);
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+      }
+    }
+
+    function resumeAutoSlideAfterDelay(delay = Math.max(Math.floor(config.interval / 2), 1500)) {
+      clearAutoResumeTimer();
+      stopAutoSlide();
+      autoResumeTimeout = setTimeout(() => {
+        isUserInteracting = false;
+        startAutoSlide();
+      }, delay);
+    }
+
+    function handleManualInteraction() {
+      isUserInteracting = true;
+      resumeAutoSlideAfterDelay();
     }
 
     if (prevBtn) {
       prevBtn.addEventListener('click', () => {
         scrollPrev();
-        startAutoSlide(); // reset timer on manual click
+        isUserInteracting = false;
+        startAutoSlide();
       });
     }
 
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
         scrollNext();
-        startAutoSlide(); // reset timer on manual click
+        isUserInteracting = false;
+        startAutoSlide();
       });
     }
 
     if (wrapper) {
-      wrapper.addEventListener('mouseenter', stopAutoSlide);
-      wrapper.addEventListener('mouseleave', startAutoSlide);
+      wrapper.addEventListener('mouseenter', () => {
+        isUserInteracting = true;
+        stopAutoSlide();
+      });
+      wrapper.addEventListener('mouseleave', () => {
+        isUserInteracting = false;
+        startAutoSlide();
+      });
     }
+
+    container.addEventListener('wheel', handleManualInteraction, { passive: true });
+    container.addEventListener('touchstart', handleManualInteraction, { passive: true });
+    container.addEventListener('touchmove', handleManualInteraction, { passive: true });
+    container.addEventListener('pointerdown', handleManualInteraction);
+    container.addEventListener('keydown', handleManualInteraction);
 
     // Start auto slide on load
     startAutoSlide();
@@ -795,6 +844,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileNavToggle.classList.add('active');
     mobileNavToggle.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
   }
 
   function closeMobileMenu() {
@@ -804,6 +854,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileNavToggle.classList.remove('active');
     mobileNavToggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   }
 
   if (mobileNavToggle) {
@@ -839,33 +890,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 13. Auto Pop Image Modal (Triggers 1 Second After Full Page Load, Auto Closes After 30 Seconds)
+  // 13. Auto Pop Image Modal (Triggers 5 Seconds After Full Page Load, Auto Closes After 30 Seconds)
   const autoPopupOverlay = document.getElementById('auto-popup-overlay');
   const autoPopupCloseBtn = document.getElementById('autoPopupCloseBtn');
+  const popupOpenDelay = 5000;
 
   if (autoPopupOverlay) {
     let autoCloseTimer = null;
 
     function openAutoPopup() {
       autoPopupOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
       // Auto close modal 30 seconds (30000ms) after opening
       autoCloseTimer = setTimeout(closeAutoPopup, 30000);
     }
 
     function closeAutoPopup() {
       autoPopupOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
       if (autoCloseTimer) {
         clearTimeout(autoCloseTimer);
         autoCloseTimer = null;
       }
     }
 
-    // Schedule 1 second (1000ms) timer after page is fully loaded
+    // Schedule popup after page is fully loaded
     if (document.readyState === 'complete') {
-      setTimeout(openAutoPopup, 1000);
+      setTimeout(openAutoPopup, popupOpenDelay);
     } else {
       window.addEventListener('load', () => {
-        setTimeout(openAutoPopup, 1000);
+        setTimeout(openAutoPopup, popupOpenDelay);
       });
     }
 

@@ -343,7 +343,7 @@ a {
 .mobile-nav-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(18, 32, 48, 0.45);
+  background: rgba(0, 0, 0, 0.78);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   z-index: 10000;
@@ -1110,7 +1110,6 @@ a {
               box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               z-index 0.1s ease;
-  cursor: pointer;
   opacity: 0; /* starts hidden for reveal transition */
 }
 
@@ -2263,7 +2262,7 @@ a {
 .quick-view-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(25, 40, 60, 0.5);
+  background-color: rgba(0, 0, 0, 0.78);
   z-index: 99990;
   display: none;
   align-items: center;
@@ -2341,6 +2340,21 @@ a {
 
 .qv-content {
   padding: 40px;
+}
+
+@media (max-width: 575.98px) {
+  .qv-content {
+    padding: 20px;
+  }
+
+  .qv-img-wrapper {
+    padding: 18px;
+  }
+
+  .quick-view-close {
+    top: 14px;
+    right: 14px;
+  }
 }
 
 /* Horizontal Carousel Slider */
@@ -2491,7 +2505,6 @@ a {
   justify-content: center;
   padding: 12px 16px;
   transition: var(--transition-smooth);
-  cursor: pointer;
 }
 
 .brand-logo-card:hover {
@@ -2546,7 +2559,6 @@ a {
   justify-content: space-between;
   position: relative;
   overflow: hidden;
-  cursor: pointer;
 }
 
 /* All content elevated above expanding background fill */
@@ -3178,7 +3190,6 @@ a {
   /* box-shadow: 0 12px 35px rgba(25, 50, 85, 0.08); */
   border: 1px solid rgba(200, 220, 235, 0.4);
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.1s ease;
-  cursor: pointer;
   width: 200px;
   height: 250px;
   display: flex;
@@ -3429,7 +3440,6 @@ a {
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
-  cursor: pointer;
 }
 
 /* Elevate children elements above expanding background fill */
@@ -4968,7 +4978,7 @@ html {
 .auto-popup-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(18, 32, 48, 0.65);
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 99990;
