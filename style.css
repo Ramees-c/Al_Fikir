@@ -1542,6 +1542,7 @@ a {
 .offer-carousel-wrapper {
   position: relative;
   width: 100%;
+  touch-action: pan-y;
 }
 
 .offer-slides-container {
@@ -1706,6 +1707,7 @@ a {
   padding: 15px 5px 25px;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
+  touch-action: pan-y;
 }
 
 .category-carousel-container::-webkit-scrollbar {
@@ -2373,6 +2375,7 @@ a {
   width: 100%;
   scrollbar-width: none;
   scroll-snap-type: x mandatory;
+  touch-action: pan-y;
 }
 
 .carousel-scroll-container::-webkit-scrollbar {
@@ -2402,24 +2405,26 @@ a {
   }
 }
 
-.carousel-ctrl-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--color-border);
+.carousel-ctrl-group {
   display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.carousel-ctrl-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   color: var(--color-primary);
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(25, 50, 85, 0.08);
-  position: absolute;
-  top: 50%;
-  z-index: 10;
+  box-shadow: 0 4px 12px rgba(25, 50, 85, 0.07);
+  position: relative;
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
 }
 
@@ -2427,29 +2432,28 @@ a {
   transition: transform 0.25s ease;
 }
 
-.carousel-ctrl-prev {
-  left: -24px;
-  transform: translateY(-50%);
-}
-
+.carousel-ctrl-prev,
 .carousel-ctrl-next {
-  right: -24px;
-  transform: translateY(-50%);
+  position: relative;
+  left: auto;
+  right: auto;
+  top: auto;
+  transform: none;
 }
 
 .carousel-ctrl-btn:hover {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
   color: #ffffff;
-  box-shadow: 0 12px 28px rgba(37, 78, 122, 0.25);
+  box-shadow: 0 8px 22px rgba(37, 78, 122, 0.24);
 }
 
 .carousel-ctrl-prev:hover {
-  transform: translateY(-50%) scale(1.08) translateX(-4px);
+  transform: translateY(-2px) scale(1.05);
 }
 
 .carousel-ctrl-next:hover {
-  transform: translateY(-50%) scale(1.08) translateX(4px);
+  transform: translateY(-2px) scale(1.05);
 }
 
 .carousel-ctrl-prev:hover i {
@@ -2461,7 +2465,7 @@ a {
 }
 
 .carousel-ctrl-btn:active {
-  transform: translateY(-50%) scale(0.95) !important;
+  transform: scale(0.95) !important;
 }
 
 /* Brands Section Carousel Slider with Vector Logos */
@@ -2480,6 +2484,7 @@ a {
   scrollbar-width: none;
   -ms-overflow-style: none;
   scroll-snap-type: x mandatory;
+  touch-action: pan-y;
 }
 
 .brand-carousel-container::-webkit-scrollbar {
@@ -2688,6 +2693,7 @@ a {
   -ms-overflow-style: none;
   align-items: center;
   scroll-snap-type: x mandatory;
+  touch-action: pan-y;
 }
 
 .testimonial-carousel-container::-webkit-scrollbar {
@@ -2802,12 +2808,6 @@ a {
   }
   .testimonial-card {
     padding: 28px 24px;
-  }
-  .testimonials-section .carousel-ctrl-prev {
-    left: -12px;
-  }
-  .testimonials-section .carousel-ctrl-next {
-    right: -12px;
   }
 }
 
@@ -4210,14 +4210,6 @@ html {
     padding: 60px 0;
   }
 
-  .featured-products-section .carousel-ctrl-prev {
-    left: -10px;
-  }
-
-  .featured-products-section .carousel-ctrl-next {
-    right: -10px;
-  }
-
   /* Brands Carousel Responsiveness (Tablet) */
   .brands-section {
     padding: 55px 0;
@@ -4237,14 +4229,6 @@ html {
   .brand-logo-card {
     border-radius: 18px;
     padding: 10px 14px;
-  }
-
-  .brands-section .carousel-ctrl-prev {
-    left: -10px;
-  }
-
-  .brands-section .carousel-ctrl-next {
-    right: -10px;
   }
 
   /* About Us Section Responsiveness (Tablet Layout) */
@@ -4371,14 +4355,6 @@ html {
     border-radius: 16px;
   }
 
-  .categories-section .carousel-ctrl-prev {
-    left: 2px;
-  }
-
-  .categories-section .carousel-ctrl-next {
-    right: 2px;
-  }
-
   /* Featured Products Carousel Responsiveness (Small Tablet) */
   .featured-products-section {
     padding: 50px 0;
@@ -4388,14 +4364,6 @@ html {
     width: 36px;
     height: 36px;
     font-size: 0.9rem;
-  }
-
-  .featured-products-section .carousel-ctrl-prev {
-    left: 2px;
-  }
-
-  .featured-products-section .carousel-ctrl-next {
-    right: 2px;
   }
 
   /* Brands Carousel Responsiveness (Small Tablet) */

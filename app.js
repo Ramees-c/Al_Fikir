@@ -454,9 +454,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector(config.selector);
     if (!container) return;
 
-    const wrapper = container.parentElement;
-    const prevBtn = wrapper ? wrapper.querySelector('.carousel-ctrl-prev') : null;
-    const nextBtn = wrapper ? wrapper.querySelector('.carousel-ctrl-next') : null;
+    const section = container.closest('section') || container.parentElement;
+    const prevBtn = section ? section.querySelector('.carousel-ctrl-prev') : null;
+    const nextBtn = section ? section.querySelector('.carousel-ctrl-next') : null;
     let autoSlideInterval = null;
     let autoResumeTimeout = null;
     let isUserInteracting = false;
@@ -552,12 +552,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    if (wrapper) {
-      wrapper.addEventListener('mouseenter', () => {
+    if (section) {
+      section.addEventListener('mouseenter', () => {
         isUserInteracting = true;
         stopAutoSlide();
       });
-      wrapper.addEventListener('mouseleave', () => {
+      section.addEventListener('mouseleave', () => {
         isUserInteracting = false;
         startAutoSlide();
       });
@@ -820,15 +820,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 11. Minimal & Modern Page Loader Fade-Out
-  const pageLoader = document.getElementById('page-loader');
-  if (pageLoader) {
-    setTimeout(() => {
+  function hidePreloader() {
+    const pageLoader = document.getElementById('page-loader');
+    if (pageLoader && !pageLoader.classList.contains('fade-out')) {
       pageLoader.classList.add('fade-out');
       setTimeout(() => {
         pageLoader.style.display = 'none';
       }, 650);
-    }, 500);
+    }
   }
+  hidePreloader();
+  window.addEventListener('load', hidePreloader);
 
   // 12. Mobile Navigation Drawer Interactive Toggle & Accessibility
   const mobileNavToggle = document.getElementById('mobileNavToggle');
