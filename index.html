@@ -2190,9 +2190,6 @@
     <!-- Quick View Modal -->
     <div class="quick-view-overlay" id="quickViewOverlay">
       <div class="quick-view-modal">
-        <button class="quick-view-close" id="qvCloseBtn">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
         <div class="row g-0">
           <div class="col-md-6">
             <div class="qv-img-wrapper">
@@ -2201,17 +2198,22 @@
           </div>
           <div class="col-md-6">
             <div class="qv-content">
-              <h2 id="qvTitle" class="fw-bold mb-2"></h2>
-              <div class="product-rating mb-2">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-                ><i class="fa-solid fa-star"></i>
+              <div class="d-inline-flex align-items-center gap-1 mb-2">
+                <span class="badge bg-pastel-blue text-primary px-3 py-1 fw-bold rounded-pill" style="font-size: 0.75rem; border: 1px solid rgba(37, 78, 122, 0.15);">
+                  <i class="fa-solid fa-sparkles me-1 text-danger"></i> PREMIUM STATIONERY
+                </span>
               </div>
+              <h2 id="qvTitle" class="fw-bold mb-2"></h2>
               <div id="qvPrice" class="fs-4 fw-bold text-primary mb-3"></div>
               <p id="qvDesc" class="text-muted mb-4"></p>
-              <button class="btn btn-wavy py-2 px-4" id="qvCloseModalBtn">
-                Close Details
-              </button>
+              <div class="d-flex align-items-center gap-2 flex-wrap">
+                <button class="btn btn-hero-coral py-2-5 px-4 flex-grow-1" id="qvAddToCartBtn">
+                  <i class="fa-solid fa-cart-shopping me-2"></i>Add to Cart
+                </button>
+                <button class="btn btn-wavy py-2-5 px-3" id="qvCloseModalBtn">
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>

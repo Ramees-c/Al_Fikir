@@ -344,6 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const quickViewOverlay = document.getElementById('quickViewOverlay');
   const qvCloseBtn = document.getElementById('qvCloseBtn');
   const qvCloseModalBtn = document.getElementById('qvCloseModalBtn');
+  const qvAddToCartBtn = document.getElementById('qvAddToCartBtn');
   const qvImg = document.getElementById('qvImg');
   const qvTitle = document.getElementById('qvTitle');
   const qvPrice = document.getElementById('qvPrice');
@@ -369,17 +370,32 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.style.overflow = '';
   }
 
-  // Bind Quick View triggers
+  // Bind Quick View triggers (Clicking anywhere on a product-card opens the detail popup)
   document.body.addEventListener('click', (e) => {
+    const productCard = e.target.closest('.product-card');
+    if (productCard) {
+      const trigger = productCard.querySelector('[data-id]');
+      if (trigger) {
+        const pId = parseInt(trigger.getAttribute('data-id'));
+        if (pId) openQuickView(pId);
+        return;
+      }
+    }
     const qvBtn = e.target.closest('.quick-view-trigger');
     if (qvBtn) {
       const pId = parseInt(qvBtn.getAttribute('data-id'));
-      openQuickView(pId);
+      if (pId) openQuickView(pId);
     }
   });
 
   if (qvCloseBtn) qvCloseBtn.addEventListener('click', closeQuickView);
   if (qvCloseModalBtn) qvCloseModalBtn.addEventListener('click', closeQuickView);
+  if (qvAddToCartBtn) {
+    qvAddToCartBtn.addEventListener('click', () => {
+      alert(`Added "${qvTitle.innerText}" to your cart! 🛒✨`);
+      closeQuickView();
+    });
+  }
   if (quickViewOverlay) {
     quickViewOverlay.addEventListener('click', (e) => {
       if (e.target === quickViewOverlay) closeQuickView();
