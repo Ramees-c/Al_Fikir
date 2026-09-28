@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
   <rect width="200" height="60" rx="14" fill="#254E7A"/>
-  <path d="M35 18 L50 30 L35 42" stroke="#F4A261" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M35 18 L50 30 L35 42" stroke="#ffd911" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
   <text x="120" y="38" font-family="'Outfit', sans-serif" font-weight="800" font-size="24" fill="#FFFFFF" text-anchor="middle" letter-spacing="3">KOKUYO</text>
 </svg>

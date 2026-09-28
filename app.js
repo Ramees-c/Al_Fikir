@@ -132,18 +132,26 @@ document.addEventListener('DOMContentLoaded', () => {
   let offerSlideInterval;
 
   if (offerSlides.length > 0) {
-    function showOfferSlide(index) {
-      offerSlides.forEach((slide) => slide.classList.remove('active'));
+    function showOfferSlide(index, direction = 'next') {
+      const prevSlideIndex = currentOfferSlide;
       currentOfferSlide = (index + offerSlides.length) % offerSlides.length;
+
+      offerSlides.forEach((slide, idx) => {
+        slide.classList.remove('active', 'prev-exit');
+        if (idx === prevSlideIndex && prevSlideIndex !== currentOfferSlide) {
+          slide.classList.add('prev-exit');
+        }
+      });
+
       offerSlides[currentOfferSlide].classList.add('active');
     }
 
     function nextOfferSlide() {
-      showOfferSlide(currentOfferSlide + 1);
+      showOfferSlide(currentOfferSlide + 1, 'next');
     }
 
     function prevOfferSlide() {
-      showOfferSlide(currentOfferSlide - 1);
+      showOfferSlide(currentOfferSlide - 1, 'prev');
     }
 
     function startOfferSlideShow() {
@@ -184,109 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
     startOfferSlideShow();
   }
 
-  // 1.5 Interactive Parallax & Cursor Sparkle Trail for Hero
-  const heroSection = document.querySelector('.hero-slider-container');
-  if (heroSection) {
-    // A. Parallax Effect
-    const parallaxElements = [
-      { selector: '.hero-svg-paper-plane', speed: 0.04 },
-      { selector: '.hero-svg-wave-left', speed: -0.015 },
-      { selector: '.hero-svg-sparkle-topright', speed: 0.025 },
-      { selector: '.hero-svg-blob-bottomright', speed: -0.01 },
-      { selector: '.hero-sushi-sticker', speed: 0.03 },
-      { selector: '.hero-svg-doodles-center', speed: 0.05 },
-      { selector: '.hero-svg-ribbon-left', speed: 0.02 }
-    ];
 
-    function resetHeroParallax() {
-      if (!heroSection) return;
-      parallaxElements.forEach((item) => {
-        const el = heroSection.querySelector(item.selector);
-        if (el) {
-          el.style.setProperty('--mx', '0px');
-          el.style.setProperty('--my', '0px');
-        }
-      });
-    }
-
-    heroSection.addEventListener('mousemove', (e) => {
-      // Disable mouse pointer effects on small screens (width <= 991px)
-      if (window.innerWidth <= 991) {
-        resetHeroParallax();
-        return;
-      }
-
-      const rect = heroSection.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-
-      parallaxElements.forEach((item) => {
-        const el = heroSection.querySelector(item.selector);
-        if (el) {
-          const mx = x * item.speed;
-          const my = y * item.speed;
-          el.style.setProperty('--mx', `${mx}px`);
-          el.style.setProperty('--my', `${my}px`);
-        }
-      });
-    });
-
-    heroSection.addEventListener('mouseleave', () => {
-      resetHeroParallax();
-    });
-
-    window.addEventListener('resize', () => {
-      if (window.innerWidth <= 991) {
-        resetHeroParallax();
-      }
-    });
-
-    // B. Sparkle Trail Generator
-    let lastSparkleTime = 0;
-    const sparkleColors = ['#E85D75', '#F4A261', '#254E7A', '#D7E9F4', '#FFF4CC'];
-
-    heroSection.addEventListener('mousemove', (e) => {
-      // Disable sparkle particles on small screens
-      if (window.innerWidth <= 991) return;
-
-      const now = Date.now();
-      if (now - lastSparkleTime < 50) return; // rate limit: 1 sparkle per 50ms
-      lastSparkleTime = now;
-
-      const rect = heroSection.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      // Double check bounds
-      if (x < 0 || x > rect.width || y < 0 || y > rect.height) return;
-
-      const sparkle = document.createElement('div');
-      sparkle.className = 'hero-sparkle-particle';
-
-      const shapes = ['★', '✦', '✧', '♥', '●', '✚'];
-      sparkle.innerText = shapes[Math.floor(Math.random() * shapes.length)];
-
-      const size = Math.random() * 12 + 12; // 12px to 24px
-      const color = sparkleColors[Math.floor(Math.random() * sparkleColors.length)];
-
-      sparkle.style.left = `${x}px`;
-      sparkle.style.top = `${y}px`;
-      sparkle.style.fontSize = `${size}px`;
-      sparkle.style.color = color;
-
-      const vx = (Math.random() - 0.5) * 80;
-      const vy = (Math.random() - 0.8) * 80 - 30; // float upwards
-
-      sparkle.style.setProperty('--vx', `${vx}px`);
-      sparkle.style.setProperty('--vy', `${vy}px`);
-
-      heroSection.appendChild(sparkle);
-
-      setTimeout(() => {
-        sparkle.remove();
-      }, 1000);
-    });
-  }
 
   // 2. Countdown Timer
   // Set target date (e.g., 282 days from now, as per reference screenshot, or standard 10 days rolling)
@@ -437,32 +343,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 7. Horizontal Carousel Sliders (Categories, Featured, Brands, New Arrivals & Reviews) with Auto-Slide
+  // 7. Horizontal Carousel Sliders (Categories, Featured, Brands, New Arrivals & Reviews) with Auto-Slide & Viewport Observer Optimization
   const carouselConfigs = [
     {
       name: 'Category Carousel',
       selector: '.category-carousel-container',
-      interval: 4000
+      interval: 2500
     },
     {
       name: 'Featured Products Carousel',
       selector: '.featured-products-section .carousel-scroll-container',
-      interval: 3500
+      interval: 2200
     },
     {
       name: 'Brands Carousel',
       selector: '.brand-carousel-container',
-      interval: 2500
+      interval: 1500
     },
     {
       name: 'New Arrivals Carousel',
       selector: '.new-arrivals-section .carousel-scroll-container',
-      interval: 3000
+      interval: 2000
     },
     {
       name: 'Reviews Carousel',
       selector: '.testimonial-carousel-container',
-      interval: 5000
+      interval: 3000
     }
   ];
 
@@ -473,61 +379,61 @@ document.addEventListener('DOMContentLoaded', () => {
     const section = container.closest('section') || container.parentElement;
     const prevBtn = section ? section.querySelector('.carousel-ctrl-prev') : null;
     const nextBtn = section ? section.querySelector('.carousel-ctrl-next') : null;
-    let autoSlideInterval = null;
-    let autoResumeTimeout = null;
-    let isUserInteracting = false;
 
-    function getScrollStep() {
+    let autoSlideInterval = null;
+    let interactionTimeout = null;
+    let isHovered = false;
+    let isVisibleInViewport = false;
+    let cachedScrollStep = 300;
+    let cachedMaxScrollLeft = 0;
+
+    // Cache metrics to eliminate layout thrashing during animation cycles
+    function updateMetrics() {
       if (container.firstElementChild) {
         const style = window.getComputedStyle(container);
         const gap = parseFloat(style.gap) || 0;
-        return container.firstElementChild.offsetWidth + gap;
+        cachedScrollStep = container.firstElementChild.offsetWidth + gap;
       }
-      return 300; // fallback
+      cachedMaxScrollLeft = Math.max(0, container.scrollWidth - container.clientWidth);
     }
+    updateMetrics();
+
+    // Debounced window resize handler
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateMetrics, 150);
+    }, { passive: true });
 
     function scrollNext() {
-      const maxScrollLeft = container.scrollWidth - container.clientWidth;
-      const scrollStep = getScrollStep();
+      if (cachedMaxScrollLeft <= 0) updateMetrics();
 
-      // If we are at the end, scroll back to 0
-      if (container.scrollLeft >= maxScrollLeft - 15) {
+      // If near the end, wrap around to start
+      if (container.scrollLeft >= cachedMaxScrollLeft - 15) {
         container.scrollTo({ left: 0, behavior: 'smooth' });
       } else {
-        // Find nearest current snapped index and go to next
-        const currentIndex = Math.round(container.scrollLeft / scrollStep);
-        container.scrollTo({ left: (currentIndex + 1) * scrollStep, behavior: 'smooth' });
+        const currentIndex = Math.round(container.scrollLeft / cachedScrollStep);
+        container.scrollTo({ left: (currentIndex + 1) * cachedScrollStep, behavior: 'smooth' });
       }
     }
 
     function scrollPrev() {
-      const maxScrollLeft = container.scrollWidth - container.clientWidth;
-      const scrollStep = getScrollStep();
+      if (cachedMaxScrollLeft <= 0) updateMetrics();
 
-      // If we are at the start, wrap to the end
+      // If near the start, wrap around to end
       if (container.scrollLeft <= 15) {
-        container.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
+        container.scrollTo({ left: cachedMaxScrollLeft, behavior: 'smooth' });
       } else {
-        // Find nearest current snapped index and go to previous
-        const currentIndex = Math.round(container.scrollLeft / scrollStep);
-        container.scrollTo({ left: (currentIndex - 1) * scrollStep, behavior: 'smooth' });
-      }
-    }
-
-    function clearAutoResumeTimer() {
-      if (autoResumeTimeout) {
-        clearTimeout(autoResumeTimeout);
-        autoResumeTimeout = null;
+        const currentIndex = Math.round(container.scrollLeft / cachedScrollStep);
+        container.scrollTo({ left: (currentIndex - 1) * cachedScrollStep, behavior: 'smooth' });
       }
     }
 
     function startAutoSlide() {
-      clearAutoResumeTimer();
       stopAutoSlide();
+      if (isHovered || !isVisibleInViewport) return;
       autoSlideInterval = setInterval(() => {
-        if (!isUserInteracting) {
-          scrollNext();
-        }
+        scrollNext();
       }, config.interval);
     }
 
@@ -538,55 +444,80 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    function resumeAutoSlideAfterDelay(delay = Math.max(Math.floor(config.interval / 2), 1500)) {
-      clearAutoResumeTimer();
-      stopAutoSlide();
-      autoResumeTimeout = setTimeout(() => {
-        isUserInteracting = false;
-        startAutoSlide();
-      }, delay);
-    }
-
     function handleManualInteraction() {
-      isUserInteracting = true;
-      resumeAutoSlideAfterDelay();
+      stopAutoSlide();
+      if (interactionTimeout) {
+        clearTimeout(interactionTimeout);
+        interactionTimeout = null;
+      }
+      interactionTimeout = setTimeout(() => {
+        if (isVisibleInViewport && !isHovered) {
+          startAutoSlide();
+        }
+      }, 5000); // Resume auto slide after 5 seconds of inactivity
     }
 
     if (prevBtn) {
       prevBtn.addEventListener('click', () => {
         scrollPrev();
-        isUserInteracting = false;
-        startAutoSlide();
+        handleManualInteraction();
       });
     }
 
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
         scrollNext();
-        isUserInteracting = false;
-        startAutoSlide();
+        handleManualInteraction();
       });
     }
 
     if (section) {
       section.addEventListener('mouseenter', () => {
-        isUserInteracting = true;
+        isHovered = true;
         stopAutoSlide();
+        if (interactionTimeout) {
+          clearTimeout(interactionTimeout);
+          interactionTimeout = null;
+        }
       });
       section.addEventListener('mouseleave', () => {
-        isUserInteracting = false;
+        isHovered = false;
         startAutoSlide();
       });
     }
 
-    container.addEventListener('wheel', handleManualInteraction, { passive: true });
+    // Viewport Visibility Observer - Only auto-slide when carousel is on screen!
+    if ('IntersectionObserver' in window) {
+      const carouselObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            isVisibleInViewport = true;
+            updateMetrics();
+            startAutoSlide();
+          } else {
+            isVisibleInViewport = false;
+            stopAutoSlide();
+          }
+        });
+      }, { threshold: 0.15 });
+
+      carouselObserver.observe(section || container);
+    } else {
+      // Fallback for older browsers
+      isVisibleInViewport = true;
+      startAutoSlide();
+    }
+
+    container.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        handleManualInteraction();
+      }
+    }, { passive: true });
+
     container.addEventListener('touchstart', handleManualInteraction, { passive: true });
     container.addEventListener('touchmove', handleManualInteraction, { passive: true });
-    container.addEventListener('pointerdown', handleManualInteraction);
-    container.addEventListener('keydown', handleManualInteraction);
-
-    // Start auto slide on load
-    startAutoSlide();
+    container.addEventListener('pointerdown', handleManualInteraction, { passive: true });
+    container.addEventListener('keydown', handleManualInteraction, { passive: true });
   });
 
   // 8. Animated Counters for About Us Section

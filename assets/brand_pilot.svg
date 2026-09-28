@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
   <rect width="200" height="60" rx="14" fill="#00529B"/>
-  <circle cx="42" cy="30" r="12" fill="#F4A261"/>
+  <circle cx="42" cy="30" r="12" fill="#ffd911"/>
   <text x="120" y="38" font-family="'Outfit', sans-serif" font-weight="900" font-size="25" fill="#FFFFFF" text-anchor="middle" letter-spacing="3">PILOT</text>
 </svg>
